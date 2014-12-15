@@ -1,0 +1,10 @@
+<% title("Posts") %>
+<h1>Posts</h1>
+
+<%= react_component('PostsList',
+                    { posts: @posts },
+                    { prerender: true }) %>
+
+<div class="pagination-control text-center">
+  <%= paginate @posts %>
+</div>

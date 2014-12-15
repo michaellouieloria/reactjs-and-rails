@@ -1,0 +1,33 @@
+<!-- <nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'Home', root_path, class: 'navbar-brand' %>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <%= render 'layouts/navigation_links' %>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+
+<%
+  if user_signed_in?
+    if current_user.admin?
+      @logged = 1;
+    else
+      @logged = 0;
+    end
+  else
+    @logged = 0;
+  end
+%>
+<%= react_component('Header',
+                    { currentPage: request.path, logged: @logged },
+                    { prerender: true }) %>
